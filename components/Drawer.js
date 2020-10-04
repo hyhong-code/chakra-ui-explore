@@ -13,6 +13,7 @@ import {
   useColorMode,
   Input,
   Link,
+  Stack,
 } from "@chakra-ui/core";
 import { Fragment } from "react";
 
@@ -33,16 +34,23 @@ export default function DrawerExample() {
           <DrawerHeader>Demo</DrawerHeader>
 
           <DrawerBody>
-            <IconButton
-              onClick={toggleColorMode}
-              icon={colorMode === "dark" ? "sun" : "moon"}
-              variant="ghost"
-            />
-            <Input placeholder="Type here..." />
+            <Stack>
+              <IconButton
+                alignSelf="flex-start"
+                onClick={toggleColorMode}
+                icon={colorMode === "dark" ? "sun" : "moon"}
+                variant="ghost"
+              />
+              <Input placeholder="Type here..." />
 
-            <NextLink href="/form">
-              <Link>Form</Link>
-            </NextLink>
+              <NextLink href="/form">
+                <Link>Form</Link>
+              </NextLink>
+
+              <NextLink href="/card">
+                <Link>Card</Link>
+              </NextLink>
+            </Stack>
           </DrawerBody>
 
           <DrawerFooter>
