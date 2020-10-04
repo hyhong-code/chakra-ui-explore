@@ -1,62 +1,41 @@
-const {
-  Input,
-  Stack,
-  Flex,
-  Icon,
-  InputLeftAddon,
-  InputGroup,
-  InputLeftElement,
-  useColorMode,
-  Button,
-  FormControl,
-  Divider,
-  FormHelperText,
-} = require("@chakra-ui/core");
+import { useColorMode, Box, Image, Tabs, TabList, TabPanel, TabPanels, Tab } from "@chakra-ui/core";
+
+import LoginForm from "../components/LoginForm";
+import SignupForm from "../components/SignupForm";
 
 const form = () => {
   const { colorMode } = useColorMode();
   return (
-    <Flex as="form" align="center" justify="center">
-      <Stack spacing={2}>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<Icon name="info" />} />
-            <Input type="name" placeholder="First name" aria-label="First name" />
-          </InputGroup>
-        </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<Icon name="info" />} />
-            <Input type="name" placeholder="Last name" aria-label="Last name" />
-          </InputGroup>
-        </FormControl>
-        <Divider />
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<Icon name="email" />} />
-            <Input type="email" placeholder="Email" aria-label="Email" />
-          </InputGroup>
-        </FormControl>
-        <FormControl isRequired>
-          <InputGroup>
-            <InputLeftElement children={<Icon name="lock" />} />
-            <Input type="password" placeholder="Passowrd" aria-label="Password" />
-          </InputGroup>
-        </FormControl>
-
-        <Button
-          type="submit"
-          boxShadow="sm"
-          variant="solid"
-          _hover={{ boxShadow: "md" }}
-          _active={{ boxShadow: "lg" }}
-        >
-          Sign up
-        </Button>
-
-        <FormHelperText textAlign="center">We will never share your email!</FormHelperText>
-      </Stack>
-    </Flex>
+    <Box
+      bg={colorMode === "light" ? "gray.200" : "gray.600"}
+      w="350px"
+      p={3}
+      boxShadow="sm"
+      rounded="lg"
+    >
+      <Image
+        src="https://images.unsplash.com/photo-1514302240736-b1fee5985889?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"
+        w="80px"
+        mx="auto"
+        mt={12}
+        mb={10}
+        rounded="md"
+      />
+      <Tabs variant="enclosed-colored" m={4} isFitted>
+        <TabList>
+          <Tab>Sign up</Tab>
+          <Tab>Login</Tab>
+        </TabList>
+        <TabPanels mt={3}>
+          <TabPanel>
+            <SignupForm />
+          </TabPanel>
+          <TabPanel>
+            <LoginForm />
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
+    </Box>
   );
 };
 
